@@ -22,9 +22,15 @@ We are using passportjs and the api key strategy for authenticating the non publ
 ###Jest
 Jest is used as the testing framework
 
+###Swagger
+Swagger is used for documenting the API, it's used in email-service and exposed via. It could be used in the other services in the same way.
+```
+http://localhost:3001/api
+```
+
 ##Folder structure
 .  
-├── email-service (service responsible of sending the emails)   
+├── email-service (service responsible for sending the emails)   
 │   ├── src (source and unit tests)  
 │   ├── test (integration tests)   
 │   ├── Dockerfile   
@@ -34,7 +40,7 @@ Jest is used as the testing framework
 │   ├── test (integration tests)      
 │   ├── Dockerfile   
 │   └── Jenkinsfile   
-├── subscription-service (service responsible of handling the subscriptions)  
+├── subscription-service (service responsible for handling the subscriptions)  
 │   ├── src (source and unit tests)    
 │   ├── test (integration tests)     
 │   ├── Dockerfile   
@@ -105,5 +111,5 @@ The deployments are included in the `infrastructure/k8s` folder.
 - There's a deployment and a service for each one of the three microservices.
 - Cassandra has its own deployment and service, `memory` is set to cover the minimum requirements of a development environment. 
   
-In production we shouldn't use this approach and we should deploy a proper cassandra cluster.
+In production, we shouldn't use this approach, and we should deploy a proper cassandra cluster.
 

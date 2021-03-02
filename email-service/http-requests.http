@@ -1,0 +1,12 @@
+# curl -XPOST http://127.0.0.1:3000/subscriptions/ --data {} -H "apiKey: test"
+POST http://127.0.0.1:3001/email/
+apiKey: test
+Content-Type: application/json
+
+{
+  "from": "newsletter@adidas.com",
+  "to": "myemail@email.com",
+  "subject": "test",
+  "content": "this is a test message"
+}
+###

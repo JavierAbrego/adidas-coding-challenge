@@ -3,7 +3,6 @@ import { SubscriptionsModule } from './subscriptions/subscriptions.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthMiddleware } from './middleware/auth.middleware';
 import { CassandraModule } from './cassandra/cassandra.module';
-import { EmailService } from './email/email.service';
 
 @Module({
   imports: [SubscriptionsModule, AuthModule, CassandraModule],

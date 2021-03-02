@@ -1,0 +1,47 @@
+version: '3'
+services:
+  cassandra:
+    image: cassandra:3
+    ports:
+      - "9042:9042"
+    environment:
+      - HEAP_NEWSIZE=1M
+      - MAX_HEAP_SIZE=1024M
+    networks:
+      - overlay
+    volumes:
+      - "./cassandra-init.sh:/cassandra-init.sh"
+    command: "sh /cassandra-init.sh"
+    healthcheck:
+      test: ["CMD-SHELL", "[ $$(nodetool statusgossip) = running ]"]
+  email-service:
+    image: jabrego/email-service:latest
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - overlay
+  subscription-service:
+    depends_on:
+      - cassandra
+      - email-service
+    image: jabrego/subscription-service:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - overlay
+  public-service:
+    depends_on:
+      - subscription-service
+    image: jabrego/public-service:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - overlay
+networks:
+  overlay:

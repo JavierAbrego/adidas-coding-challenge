@@ -1,0 +1,45 @@
+# curl -XPOST http://127.0.0.1:3000/subscriptions/ --data {} -H "apiKey: test"
+POST http://127.0.0.1:3001/email/
+apiKey: test
+Content-Type: application/json
+
+{
+  "email": "myemail@email.com",
+  "dateOfBirth": 10,
+  "newsletterId": "123",
+  "consent": true
+}
+###
+
+POST http://127.0.0.1:3000/subscriptions/
+apiKey: test
+Content-Type: application/json
+
+{
+  "email": "myemail@email.com",
+  "dateOfBirth": 10,
+  "newsletterId": "123",
+  "consent": true
+}
+
+###
+
+GET http://127.0.0.1:3000/subscriptions/
+apiKey: test
+Content-Type: application/json
+
+###
+GET http://127.0.0.1:3000/subscriptions/67ab4d4b-febc-420a-aecb-7d8432cd3e8a
+apiKey: test
+Content-Type: application/json
+
+###
+PUT http://127.0.0.1:3000/subscriptions/
+apiKey: test
+Content-Type: application/json
+
+{
+  "id": "2ba223fc-ffca-42db-947d-947d50ca6518",
+  "subscribed": false
+}
+

@@ -1,0 +1,15 @@
+# curl -XPOST http://127.0.0.1:3000/subscriptions/ --data {} -H "apiKey: test"
+POST http://127.0.0.1:8080/subscribe
+Content-Type: application/json
+
+{
+  "email": "myemail@domain.com",
+  "dateOfBirth": "10",
+  "newsletterId": "123",
+  "consent": true
+}
+
+###
+
+GET http://127.0.0.1:8080/unsubscribe/202eba82-abfb-4c59-b3cf-89bd2ee84011
+Content-Type: application/json

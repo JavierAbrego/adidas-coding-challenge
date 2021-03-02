@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    certmanager.k8s.io/cluster-issuer: "letsencrypt-pro"
+    certmanager.k8s.io/acme-challenge-type: http01
+  name: dev-newsletter-adidas-com
+spec:
+  rules:
+    - host: dev.newsletter.adidas.com
+      http:
+        paths:
+          - path: /(|$)(.*)
+            backend:
+              serviceName: public-service
+              servicePort: 8080
+  tls:
+    - hosts:
+        - dev.newsletter.adidas.com
+      secretName: newsletter-adidas-com-tls

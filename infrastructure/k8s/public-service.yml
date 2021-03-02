@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: public-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: public-service
+  template:
+    metadata:
+      labels:
+        app: public-service
+    spec:
+      containers:
+        - name: public-service
+          image: jabrego/public-service:latest
+          imagePullPolicy: Always
+          env:
+            - name: NODE_ENV
+              value: "production"
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "150m"
+            limits:
+              memory: "300Mi"
+              cpu: "2000m"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: public-service
+  labels:
+    app: public-service
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: public-service              

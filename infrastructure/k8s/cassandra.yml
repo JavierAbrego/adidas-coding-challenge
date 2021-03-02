@@ -1,0 +1,50 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cassandra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cassandra
+  template:
+    metadata:
+      labels:
+        app: cassandra
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: cassandra
+          image: "cassandra:3"
+          imagePullPolicy: Always
+          env:
+            - name: HEAP_NEWSIZE
+              value: "1M"
+            - name: MAX_HEAP_SIZE
+              value: "1024M"
+          ports:
+            - containerPort: 9042
+          resources:
+            requests:
+              memory: "1500Mi"
+              cpu: "150m"
+            limits:
+              memory: "2000Mi"
+              cpu: "2000m"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cassandra
+  labels:
+    app: cassandra
+spec:
+  ports:
+    - port: 9042
+      protocol: TCP
+      targetPort: 9042
+  selector:
+    app: cassandra

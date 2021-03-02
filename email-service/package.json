@@ -26,12 +26,14 @@
     "@nestjs/mapped-types": "^0.3.0",
     "@nestjs/passport": "^7.1.5",
     "@nestjs/platform-express": "^7.6.13",
+    "@nestjs/swagger": "^4.7.15",
     "class-validator": "^0.13.1",
     "passport": "^0.4.1",
     "passport-headerapikey": "^1.2.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.6"
+    "rxjs": "^6.6.6",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.6",

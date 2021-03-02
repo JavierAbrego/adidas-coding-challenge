@@ -1,34 +1,34 @@
-#adidas Coding Challenge  
-##Requirements to use  
+# adidas Coding Challenge  
+## Requirements to use  
 - Docker
 - Node (v12)
 - NPM
 
-##Project dependencies  
-###NestJS with express  
+## Project dependencies  
+### NestJS with express  
 - NestJS by design, throught the use of design patters help to achieve scalabality in terms of code base growth.
 - It provides seamless integration with some required features like security integration or validations.
 - Easy to organize the code and split features into logical reusable units through the use of modules.
 - Services and dependencies that can be injected into controllers
 - Routing and controllers are created easily through the use of decorators
 
-###Cassandra  
+### Cassandra  
 - Cassandra is the choosen database for persistence. Capable of providing High availability by design. 
 - It scales horizontally, and we can efficiently achieve low latency and high throughput
 
-###Passportjs  
+### Passportjs  
 We are using passportjs and the api key strategy for authenticating the non public service.
 
-###Jest  
+### Jest  
 Jest is used as the testing framework
 
-###Swagger  
+### Swagger  
 Swagger is used for documenting the API, it's used in email-service and exposed via. It could be used in the other services in the same way.
 ```
 http://localhost:3001/api
 ```
 
-##Folder structure  
+## Folder structure  
 .  
 ├── email-service (service responsible for sending the emails)   
 │   ├── src (source and unit tests)  
@@ -96,13 +96,13 @@ Every microservice folder contains its Jenkinsfile
 ```
 
 They all have a pipeline of 5 stages
-####Prepare  
+#### Prepare  
 - This stage install the dependencies of package.json
-####Test  
+#### Test  
 - Run unit tests, here we could include the sonar analysis and coverage of the projects.
-####Docker  
+#### Docker  
 - This step create the build via `npm run build` and create the docker images as well as push them to `dockerhub`
-####Deploy  
+#### Deploy  
 In this step we asume that we have a library in places named k8s that deploys passing the component name as parameter and the version.
 
 ## Deployment k8s  
